@@ -7,7 +7,7 @@ const deviceSchema = new Schema({
     },
     model: { 
         type: String,
-        reqired: true,
+        required: true,
     },
     hardDisk: {
         type: String,
@@ -43,7 +43,7 @@ const deviceSchema = new Schema({
     },
     weight: { 
         type: String,
-        required: true
+        required: true,
     },
     image: {
         type: String,
@@ -54,7 +54,7 @@ const deviceSchema = new Schema({
         ref: 'User',
     }],
     owner: {
-        types: Types.ObjectId,
+        type: Types.ObjectId,
         ref: 'User',
     }
 });
