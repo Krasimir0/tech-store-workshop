@@ -70,9 +70,9 @@
 - [x] Add notifications
 - [x] Extract error message
 - [x] Add error handling for register
-- [ ] Add error handling for login
+- [x] Add error handling for login
 11.Bonus
-- [ ] Dynamic Navigation
-- [ ] Async jsonwebtoken
-- [ ] ViewBag
-- [ ] Dynamic Titles
+- [x] Dynamic Navigation
+- [x] Async jsonwebtoken
+- [x] ViewBag
+- [x] Dynamic Titles
