@@ -6,9 +6,9 @@ import { getErrorMessage } from "../utils/errorUtils.js";
 
 const deviceController = Router();
 
-deviceController.get('/catalog', (req, res) => {
-    
-    res.render('devices/catalog');
+deviceController.get('/catalog', async (req, res) => {
+    const devices = await deviceService.getAll();
+    res.render('devices/catalog', { devices });
 });
 
 deviceController.get('/create', (req,res) => {
@@ -30,7 +30,11 @@ deviceController.post('/create', isAuth, async (req,res) => {
         });
         
     }
-    
+deviceController.get('/:deviceId/details', (req, res) => {
+    const deviceId = req.params.deviceId;
+
+    res.render('devices/details')
+});
 });
 
 export default deviceController;
