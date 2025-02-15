@@ -10,7 +10,18 @@ const deleteDevice = async (deviceId, userId) =>  {
         return Device.findByIdAndDelete(deviceId);
     };
 
-const getAll = () => Device.find({});
+const getAll = (filter = {}) => {
+   let query = Device.find({});
+    if (filter.owner) {
+      query = query.find({ owner: filter.owner});  
+    }
+
+    if (filter.preferredBy) {
+     query = query.find({ preferredList: filter.preferredBy})
+    }
+
+   return query;
+};
 
 const getLatest = () => Device.find({}).sort({_id: 'desc'}).limit(3);
 
@@ -26,6 +37,7 @@ const update = async (deviceId, userId, deviceData) => {
   return await Device.findByIdAndUpdate(deviceId, deviceData, { runValidators: true });
 };
 
+
 const prefer = async (deviceId, userId) => {
         const device =  await Device.findById(deviceId);
         
@@ -33,11 +45,11 @@ const prefer = async (deviceId, userId) => {
             throw new Error("Cannot prefer own offer!");
         }
 
-        if (device.prefferedList.includes(userId)) {
+        if (device.preferredList.includes(userId)) {
             throw new Error("You already preferred this offer!");
         }
 
-        device.prefferedList.push(userId);
+        device.preferredList.push(userId);
 
         return device.save();
 };
