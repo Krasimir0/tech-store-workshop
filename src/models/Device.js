@@ -65,7 +65,7 @@ const deviceSchema = new Schema({
         required: true,
         match: /^https?:\/\//,
     },
-    prefferedList: [{
+    preferredList: [{
         type: Types.ObjectId,
         ref: 'User',
     }],

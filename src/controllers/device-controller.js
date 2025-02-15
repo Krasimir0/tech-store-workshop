@@ -38,7 +38,7 @@ deviceController.get("/:deviceId/details", async (req, res) => {
 
   const isOwner = device.owner.equals(req.user?.id);
 
-  const isPreferred = device.prefferedList.includes(req.user?.id);
+  const isPreferred = device.preferredList.includes(req.user?.id);
 
   res.render("devices/details", { device, isOwner, isPreferred });
 });
